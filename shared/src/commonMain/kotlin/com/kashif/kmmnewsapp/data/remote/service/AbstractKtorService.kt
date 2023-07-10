@@ -8,6 +8,4 @@ abstract class AbstractKtorService {
         page: Int,
         country: String,
     ): HeadlinesDTO
-
 }
-

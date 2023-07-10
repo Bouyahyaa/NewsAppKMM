@@ -16,7 +16,6 @@ class HomeScreenViewModel(private val getHeadlinesUseCase: GetHeadlinesUseCase) 
     var state = _state.asStateFlow()
     private var page: Int = 1
     fun onIntent(intent: HomeScreenSideEvent) {
-
         when (intent) {
             is HomeScreenSideEvent.GetHeadlines -> {
                 getHeadlines()
@@ -25,11 +24,8 @@ class HomeScreenViewModel(private val getHeadlinesUseCase: GetHeadlinesUseCase) 
     }
 
     private fun getHeadlines() {
-
         viewModelScope.launch {
-
             getHeadlinesUseCase.invoke(page = page).asResult().collectLatest { result ->
-
                 when (result) {
                     is Result.Error -> {
                         if (page == 1) {
@@ -60,16 +56,12 @@ class HomeScreenViewModel(private val getHeadlinesUseCase: GetHeadlinesUseCase) 
                             }
                         } else {
                             _state.update {
-                                (it as HomeScreenState.Success).copy(it.headlines + result.data)
+                                (it as HomeScreenState.Success).copy(headlines = it.headlines + result.data)
                             }
                         }
                     }
                 }
-
             }
-
         }
-
     }
 }
-

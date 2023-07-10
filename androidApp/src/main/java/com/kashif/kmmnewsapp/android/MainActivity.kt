@@ -7,22 +7,14 @@ import com.kashif.kmmnewsapp.android.ui.NavGraphs
 import com.kashif.kmmnewsapp.android.ui.theme.KMMNewsTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 
-
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             KMMNewsTheme {
-
-
-               DestinationsNavHost(navGraph = NavGraphs.root)
-
+                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
-
-
     }
 }
-

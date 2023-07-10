@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -18,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,14 +38,13 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import org.koin.androidx.compose.getViewModel
 
-
 @RootNavGraph(start = true)
 @Destination
 @Composable
 fun Home(
-    destinationsNavigator: DestinationsNavigator, viewModel: HomeScreenViewModel = getViewModel()
+    destinationsNavigator: DestinationsNavigator,
+    viewModel: HomeScreenViewModel = getViewModel()
 ) {
-
     LaunchedEffect(key1 = Unit) {
         viewModel.onIntent(HomeScreenSideEvent.GetHeadlines)
     }
@@ -89,22 +86,21 @@ private fun Home(state: HomeScreenState, destinationsNavigator: DestinationsNavi
                             style = MaterialTheme.typography.headlineMedium
                         )
                     }
+                }
 
-                }
-                HomeScreenState.Idle -> {
-                }
+                HomeScreenState.Idle -> {}
+
                 HomeScreenState.Loading -> {
                     placeholder()
 
                 }
+
                 is HomeScreenState.Success -> {
                     headlines(state.headlines, destinationsNavigator)
 
                 }
             }
         }
-
-
     }
 }
 
@@ -120,13 +116,9 @@ fun LazyListScope.headlines(
 }
 
 fun LazyListScope.placeholder() {
-
-    //TODO: Add accompanist place holder api
-
     item {
         CircularProgressIndicator()
     }
-
 }
 
 
@@ -151,9 +143,8 @@ fun HeadlinesCard(
                 model = ImageRequest.Builder(
                     LocalContext.current
                 ).scale(Scale.FILL).data(headlineDomainModel.urlToImage).crossfade(true).build(),
-                contentDescription = headlineDomainModel.title,
-
-                )
+                contentDescription = headlineDomainModel.title
+            )
 
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
@@ -168,7 +159,6 @@ fun HeadlinesCard(
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium
                 )
-
                 Text(
                     text = headlineDomainModel.source,
                     style = MaterialTheme.typography.bodySmall.copy(
@@ -198,5 +188,4 @@ fun HomePreview() {
 
         })
     }
-
 }

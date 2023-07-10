@@ -4,13 +4,10 @@ import com.kashif.kmmnewsapp.data.local.dao.HeadlineDAO
 import com.kashif.kmmnewsapp.data.local.service.AbstractRealmService
 import com.kashif.kmmnewsapp.data.remote.service.AbstractKtorService
 
-
 class ImplRepository(
     private val ktorService: AbstractKtorService,
     private val realmService: AbstractRealmService
 ) : AbstractRepository() {
-
-
     override suspend fun getAllHeadlines(
         page: Int,
         pageSize: Int,
@@ -19,7 +16,6 @@ class ImplRepository(
         pageSize = pageSize,
         page = page,
         country = country
-
     )
 
     override suspend fun addToReadLater(headlineDAO: HeadlineDAO) {
@@ -27,9 +23,4 @@ class ImplRepository(
     }
 
     override suspend fun getAllReadLater() = realmService.getReadLater()
-
 }
-
-
-
-

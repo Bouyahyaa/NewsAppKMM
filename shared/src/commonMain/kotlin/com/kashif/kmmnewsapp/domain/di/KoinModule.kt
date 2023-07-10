@@ -23,7 +23,6 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
-
 fun initKoin(
     enableNetworkLogs: Boolean = false,
     baseUrl: String,
@@ -43,10 +42,7 @@ fun commonModule(enableNetworkLogs: Boolean, baseUrl: String) =
         baseUrl
     ) + platformModule() + getHelperModule()
 
-fun getHelperModule() = module {
-
-
-}
+fun getHelperModule() = module {}
 
 fun getDateModule(enableNetworkLogs: Boolean, baseUrl: String) = module {
 
@@ -87,8 +83,6 @@ fun getDateModule(enableNetworkLogs: Boolean, baseUrl: String) = module {
             enableNetworkLogs = enableNetworkLogs
         )
     }
-
-
 }
 
 fun getUseCaseModule() = module {
@@ -110,8 +104,6 @@ fun createHttpClient(
     enableNetworkLogs: Boolean
 ) =
     HttpClient(httpClientEngine) {
-
-
         install(ContentNegotiation) {
             json(json)
         }
@@ -124,4 +116,3 @@ fun createHttpClient(
     }
 
 fun createJson() = Json { isLenient = true; ignoreUnknownKeys = true }
-

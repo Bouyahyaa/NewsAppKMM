@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeScreenViewModel(private val getHeadlinesUseCase: GetHeadlinesUseCase) : ViewModel() {
-
     private val _state = MutableStateFlow<HomeScreenState>(HomeScreenState.Idle)
     var state = _state.asStateFlow()
     private var page: Int = 1

@@ -1,6 +1,5 @@
 package com.kashif.kmmnewsapp
 
-
 import android.os.Parcelable
 import com.kashif.kmmnewsapp.presentation.home.HomeScreenViewModel
 import com.kashif.kmmnewsapp.presentation.newdetails.NewsDetailsViewModel
@@ -19,7 +18,6 @@ actual typealias CommonParcelable = Parcelable
 
 
 actual fun platformModule() = module {
-
 
     single {
         Android.create()
@@ -44,6 +42,4 @@ actual fun platformModule() = module {
     viewModel {
         ReadLaterViewModel(get())
     }
-
-
 }

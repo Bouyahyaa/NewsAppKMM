@@ -1,6 +1,5 @@
 package com.kashif.kmmnewsapp
 
-
 import com.kashif.kmmnewsapp.presentation.home.HomeScreenViewModel
 import com.kashif.kmmnewsapp.presentation.newdetails.NewsDetailsViewModel
 import com.kashif.kmmnewsapp.presentation.readlater.ReadLaterViewModel
@@ -15,7 +14,6 @@ actual fun platformModule() = module {
     }
 
     //single or factory can be used to get a view-model object for swiftui
-
     single {
         HomeScreenViewModel(get())
     }
@@ -37,8 +35,6 @@ object ViewModels : KoinComponent {
     fun getNewsDetailsViewModel() = get<NewsDetailsViewModel>()
 
     fun getReadLaterViewModel() = get<ReadLaterViewModel>()
-
 }
-
 
 actual interface CommonParcelable
